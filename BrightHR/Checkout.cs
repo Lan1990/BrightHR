@@ -1,13 +1,19 @@
 ﻿namespace BrightHR;
 public class Checkout : ICheckout
 {
+    List<StockKeepingUnitA> Items = new List<StockKeepingUnitA>();
     public int GetTotalPrice()
     {
-        throw new NotImplementedException();
+        var price = 0;
+        foreach (var item in Items)
+        {
+            price += item.Price;
+        }
+        return price;
     }
 
     public void Scan(StockKeepingUnitA item)
     {
-        throw new NotImplementedException();
+        Items.Add(item);
     }
 }

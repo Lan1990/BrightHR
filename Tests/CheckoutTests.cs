@@ -12,7 +12,7 @@ public class CheckoutTests
         checkout.Scan(new StockKeepingUnitA());
         int result = checkout.GetTotalPrice();
 
-        Assert.Equal(50, result);
+        Assert.Equal(100, result);
 
     }
 }
