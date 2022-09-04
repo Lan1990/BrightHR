@@ -1,7 +1,7 @@
 ﻿namespace BrightHR;
 public class Checkout : ICheckout
 {
-    private readonly List<IStockKeepingUnit> _items = new();
+    private readonly List<StockKeepingUnit> _items = new();
     public int GetTotalPrice()
     {
         var price = 0;
@@ -12,16 +12,16 @@ public class Checkout : ICheckout
         return price;
     }
 
-    public void Scan<T>(T item) where T : IStockKeepingUnit
+    public void Scan(StockKeepingUnit item)
     {
         ApplyDiscount(item);
         _items.Add(item);
     }
 
-    private void ApplyDiscount<T>(T item) where T : IStockKeepingUnit
+    private void ApplyDiscount(StockKeepingUnit item) 
     {
-        var numberOfItems = _items.Count(x => x is T) + 1;
-        if (numberOfItems % item.SaleItem.NumberOfItems !=0 )
+        var numberOfItems = _items.Count(x => x.Name == item.Name) + 1;
+        if (item.SaleItem.NumberOfItems != 0 && numberOfItems % item.SaleItem.NumberOfItems !=0 )
         {
             return;
         }
