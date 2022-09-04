@@ -14,6 +14,11 @@ public class Checkout : ICheckout
         {
             return 130;
         }
+
+        if (Items.Count(x => x is StockKeepingUnitB) == 2)
+        {
+            return 45;
+        }
         return price;
     }
 
