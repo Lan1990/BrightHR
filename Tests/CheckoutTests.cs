@@ -57,6 +57,7 @@ public class CheckoutTests
 
         Assert.Equal(30, result);
     }
+
     [Fact]
     public void TotalPriceOf1SkuAAnd1SkuB_Equals80()
     {
@@ -66,6 +67,18 @@ public class CheckoutTests
         int result = checkout.GetTotalPrice();
 
         Assert.Equal(80, result);
+    }
+
+    [Fact]
+    public void TotalPriceOf3SkuA_Equals130WithDiscount()
+    {
+        Checkout checkout = new();
+        checkout.Scan(new StockKeepingUnitA());
+        checkout.Scan(new StockKeepingUnitA());
+        checkout.Scan(new StockKeepingUnitA());
+        int result = checkout.GetTotalPrice();
+
+        Assert.Equal(130, result);
     }
 
 }
