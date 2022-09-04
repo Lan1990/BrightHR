@@ -21,11 +21,11 @@ public class Checkout : ICheckout
     private void ApplyDiscount<T>(T item) where T : IStockKeepingUnit
     {
         var numberOfItems = _items.Count(x => x is T) + 1;
-        if (numberOfItems != item.SaleItem.NumberOfItems)
+        if (numberOfItems % item.SaleItem.NumberOfItems !=0 )
         {
             return;
         }
-        var total = numberOfItems * item.Price;
+        var total = item.SaleItem.NumberOfItems * item.Price;
         var discountPrice = total - item.SaleItem.Discount;
         item.Price -= discountPrice;
     }
