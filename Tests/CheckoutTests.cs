@@ -118,4 +118,36 @@ public class CheckoutTests
         Assert.Equal(175, result);
     }
 
+    [Fact]
+    public void ATotalOF6SkuAShould_Equals260WithDiscount()
+    {
+        Checkout checkout = new();
+        checkout.Scan(new StockKeepingUnitA());
+        checkout.Scan(new StockKeepingUnitA());
+        checkout.Scan(new StockKeepingUnitA());
+        checkout.Scan(new StockKeepingUnitA());
+        checkout.Scan(new StockKeepingUnitA());
+        checkout.Scan(new StockKeepingUnitA());
+        int result = checkout.GetTotalPrice();
+
+        Assert.Equal(260, result);
+    }
+
+    [Fact]
+    public void ATotalOF9SkuAShould_Equals390WithDiscount()
+    {
+        Checkout checkout = new();
+        checkout.Scan(new StockKeepingUnitA());
+        checkout.Scan(new StockKeepingUnitA());
+        checkout.Scan(new StockKeepingUnitA());
+        checkout.Scan(new StockKeepingUnitA());
+        checkout.Scan(new StockKeepingUnitA());
+        checkout.Scan(new StockKeepingUnitA());
+        checkout.Scan(new StockKeepingUnitA());
+        checkout.Scan(new StockKeepingUnitA());
+        checkout.Scan(new StockKeepingUnitA());
+        int result = checkout.GetTotalPrice();
+
+        Assert.Equal(390, result);
+    }
 }
