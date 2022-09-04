@@ -92,4 +92,30 @@ public class CheckoutTests
         Assert.Equal(45, result);
     }
 
+    [Fact]
+    public void TotalPriceOf2SkuBAnd1SkuA_Equals95WithDiscount()
+    {
+        Checkout checkout = new();
+        checkout.Scan(new StockKeepingUnitB());
+        checkout.Scan(new StockKeepingUnitB());
+        checkout.Scan(new StockKeepingUnitA());
+        int result = checkout.GetTotalPrice();
+
+        Assert.Equal(95, result);
+    }
+
+    [Fact]
+    public void TotalPriceOf3SkuBAnd2SkuB_Equals175WithDiscount()
+    {
+        Checkout checkout = new();
+        checkout.Scan(new StockKeepingUnitB());
+        checkout.Scan(new StockKeepingUnitB());
+        checkout.Scan(new StockKeepingUnitA());
+        checkout.Scan(new StockKeepingUnitA());
+        checkout.Scan(new StockKeepingUnitA());
+        int result = checkout.GetTotalPrice();
+
+        Assert.Equal(175, result);
+    }
+
 }
