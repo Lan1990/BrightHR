@@ -1,7 +1,7 @@
 ﻿namespace BrightHR;
 internal interface ICheckout
 {
-    void Scan(StockKeepingUnitA item);
+    void Scan(IStockKeepingUnit item);
     int GetTotalPrice();
 
 }

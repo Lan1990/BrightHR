@@ -1,5 +1,5 @@
 ﻿namespace BrightHR;
-public class StockKeepingUnitA
+public class StockKeepingUnitA : IStockKeepingUnit
 {
     public int Price { get; set; } = 50;
 }

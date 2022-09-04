@@ -1,7 +1,7 @@
 ﻿namespace BrightHR;
 public class Checkout : ICheckout
 {
-    List<StockKeepingUnitA> Items = new List<StockKeepingUnitA>();
+    List<IStockKeepingUnit> Items = new List<IStockKeepingUnit>();
     public int GetTotalPrice()
     {
         var price = 0;
@@ -12,7 +12,7 @@ public class Checkout : ICheckout
         return price;
     }
 
-    public void Scan(StockKeepingUnitA item)
+    public void Scan(IStockKeepingUnit item)
     {
         Items.Add(item);
     }
