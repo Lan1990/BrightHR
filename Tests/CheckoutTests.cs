@@ -47,4 +47,25 @@ public class CheckoutTests
 
         Assert.Equal(50, result);
     }
+
+    [Fact]
+    public void TotalPriceOf11SkuB_Equals30()
+    {
+        Checkout checkout = new();
+        checkout.Scan(new StockKeepingUnitB());
+        int result = checkout.GetTotalPrice();
+
+        Assert.Equal(30, result);
+    }
+    [Fact]
+    public void TotalPriceOf1SkuAAnd1SkuB_Equals80()
+    {
+        Checkout checkout = new();
+        checkout.Scan(new StockKeepingUnitA());
+        checkout.Scan(new StockKeepingUnitB());
+        int result = checkout.GetTotalPrice();
+
+        Assert.Equal(80, result);
+    }
+
 }
